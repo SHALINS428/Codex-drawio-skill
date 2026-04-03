@@ -1,7 +1,32 @@
-Thumbs.db
-.DS_Store
-*.tmp
-*.bak
-*.log
-*.png~
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
 
+# Local environment and secrets
+.env
+.env.*
+*.local
+
+# Local data and scratch outputs
+data/
+output/
+exports/
+tmp/
+temp/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+*.drawio.bak
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,26 +1,31 @@
-# Publishing To GitHub
+# Publishing to GitHub
 
-This repository is ready to publish.
+This repository is already structured for public GitHub publication.
 
-## Option 1: Publish With GitHub Web Upload
+## Recommended Repository Metadata
 
-Use this option if `git` or `gh` is not installed locally.
+Suggested repository name:
+- `drawio-skill`
+- `codex-drawio-skill`
+- `academic-drawio-skill`
 
-1. Open GitHub in the browser and create a new repository.
-2. Use one of these names:
-   - `codex-drawio-skill`
-   - `academic-drawio-skill`
-   - `drawio-skill-for-codex`
-3. Do not initialize the repository with a README, `.gitignore`, or license, because this package already contains them.
-4. Upload the contents of this folder, or upload the prepared zip after extracting it locally.
-5. Commit the uploaded files.
+Suggested repository description:
+- `Codex skill for creating editable academic diagrams in draw.io / diagrams.net with PNG export.`
 
-## Option 2: Publish With Git After Installation
+Suggested GitHub topics:
+- `codex`
+- `skill`
+- `drawio`
+- `diagrams-net`
+- `academic-diagrams`
+- `thesis-tools`
 
-If `git` becomes available later:
+## Publish with Git in CMD
 
-```powershell
-cd D:\SocialBot-Detection\output\github\drawio-skill
+Use the repository root:
+
+```cmd
+cd /d <your-local-path>\drawio-skill
 git init
 git add .
 git commit -m "Initial commit: add drawio Codex skill"
@@ -29,23 +34,40 @@ git remote add origin <your-repo-url>
 git push -u origin main
 ```
 
-## What To Publish
+If this folder is already a Git repository, skip `git init`.
+
+If the remote already exists, use:
+
+```cmd
+git remote -v
+git push -u origin main
+```
+
+## What to Publish
 
 Publish the whole repository root, including:
 - `README.md`
+- `PUBLISHING.md`
+- `SECURITY.md`
 - `LICENSE`
 - `.gitignore`
 - `skill/drawio/...`
 
-Do not publish only `skill/drawio` unless you intentionally want a minimal repo without human-facing docs.
+Do not publish only `skill/drawio` unless you intentionally want a minimal package without top-level docs.
+
+## Recommended GitHub Settings
+
+After publishing, enable these features in the GitHub repository settings:
+- Branch protection for `main`
+- Secret scanning
+- Dependency graph
+- Dependabot alerts
+- Private vulnerability reporting if available
 
 ## Install After Publishing
 
-Users can install the skill by copying:
+Users only need to copy this folder into their local Codex skills directory:
 
 ```text
 skill/drawio
 ```
-
-into their local Codex skills directory.
-
