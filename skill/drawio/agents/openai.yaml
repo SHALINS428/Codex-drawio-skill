@@ -1,0 +1,5 @@
+interface:
+  display_name: "Drawio"
+  short_description: "Create editable academic diagrams with PNG export"
+  default_prompt: "Use $drawio to create or refine this academic diagram as both an editable .drawio file and a matching PNG."
+
