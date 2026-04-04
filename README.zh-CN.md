@@ -5,9 +5,133 @@
 
 `drawio` 是一个面向 Codex 的本地技能，用于创建、重建和修改可编辑的学术图示，输出格式为 `.drawio` / diagrams.net。
 
-默认交付物：
-- 可编辑的 `.drawio` 源文件
-- 与之对应的 `PNG` 导出图
+> [!IMPORTANT]
+> 这个仓库不是 Web 项目，也不是后端服务。
+> 你不需要部署服务器，不需要 `npm install`，也不需要构建产物。
+> 它的使用方式很简单：把 `skill/drawio` 复制到本地 Codex 技能目录即可。
+
+## 一眼看懂怎么部署
+
+| 项目 | 说明 |
+| --- | --- |
+| 项目类型 | 本地 Codex 技能 |
+| 是否需要编译 | 不需要 |
+| 是否需要服务器部署 | 不需要 |
+| 是否需要安装依赖 | 不需要 |
+| 实际部署位置 | `~/.codex/skills/` |
+| 成功标志 | Codex 能识别并执行 `$drawio` |
+
+## 部署前准备
+
+开始前，你只需要确认这几件事：
+
+- 你已经在本机使用 Codex
+- 你能访问本地 Codex 技能目录
+- 如果要使用辅助脚本，Windows 机器需要能运行 PowerShell
+- 如果要编辑或导出图，建议本机有 diagrams.net / draw.io 或等效工作流
+
+## 推荐部署方式
+
+### 方案 A：直接复制，最适合大多数人
+
+这是最直接、最容易成功的方式。
+
+#### 第 1 步：获取仓库
+
+把仓库下载到本地，或者使用 `git clone` 拉取。
+
+#### 第 2 步：创建 Codex 技能目录
+
+Windows PowerShell：
+
+```powershell
+New-Item -ItemType Directory -Force $env:USERPROFILE\.codex\skills | Out-Null
+```
+
+Windows CMD：
+
+```cmd
+mkdir %USERPROFILE%\.codex\skills
+```
+
+macOS / Linux：
+
+```bash
+mkdir -p ~/.codex/skills
+```
+
+#### 第 3 步：复制技能目录
+
+Windows PowerShell：
+
+```powershell
+Copy-Item -Recurse -Force .\skill\drawio $env:USERPROFILE\.codex\skills\
+```
+
+Windows CMD：
+
+```cmd
+xcopy /E /I /Y skill\drawio %USERPROFILE%\.codex\skills\drawio
+```
+
+macOS / Linux：
+
+```bash
+cp -R ./skill/drawio ~/.codex/skills/
+```
+
+### 方案 B：保留仓库并手动同步
+
+如果你希望以后继续更新这个技能，可以保留整个仓库，只把 `skill/drawio` 目录同步到 `~/.codex/skills/`。  
+这样更新时更方便对比变更，也更适合维护自己的分支。
+
+## 部署完成后如何验证
+
+打开 Codex，输入下面任意一条：
+
+```text
+使用 $drawio 为论文创建一个系统架构图，交付 .drawio 源文件和 PNG。
+```
+
+```text
+使用 $drawio 画一个技术路线图，区分研究阶段、关键方法和阶段输出。
+```
+
+如果 Codex 能识别 `$drawio` 并按这个技能的风格响应，说明部署成功。
+
+如果没有立即生效，可以重新打开当前会话，或重新启动 Codex 后再试一次。
+
+## 更新方式
+
+如果你后续修改了这个仓库，可以重新执行一次复制命令覆盖旧版本：
+
+Windows PowerShell：
+
+```powershell
+Copy-Item -Recurse -Force .\skill\drawio $env:USERPROFILE\.codex\skills\
+```
+
+macOS / Linux：
+
+```bash
+cp -R ./skill/drawio ~/.codex/skills/
+```
+
+## 卸载方式
+
+如果你不再需要这个技能，删除本地技能目录中的 `drawio` 文件夹即可。
+
+Windows PowerShell：
+
+```powershell
+Remove-Item -Recurse -Force $env:USERPROFILE\.codex\skills\drawio
+```
+
+macOS / Linux：
+
+```bash
+rm -rf ~/.codex/skills/drawio
+```
 
 ## 这个仓库提供什么
 
@@ -24,39 +148,6 @@
 - 模块关系图
 - 实验设计与消融流程图
 - 将现有图片重建为可编辑的 `.drawio` 文件
-
-## 安装方式
-
-### Windows PowerShell
-
-将技能复制到本地 Codex 技能目录：
-
-```powershell
-Copy-Item -Recurse -Force .\skill\drawio C:\Users\<YourUser>\.codex\skills\
-```
-
-### macOS / Linux
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R ./skill/drawio ~/.codex/skills/
-```
-
-## 在 Codex 中使用
-
-### 中文示例
-
-```text
-使用 $drawio 为论文创建一个系统架构图，交付 .drawio 源文件和 PNG。
-```
-
-```text
-使用 $drawio 把这张已有截图重建成可编辑的 drawio 图，并保持学术风格与 A4 可读性。
-```
-
-```text
-使用 $drawio 画一个技术路线图，区分研究阶段、关键方法和阶段输出。
-```
 
 ## 辅助脚本
 

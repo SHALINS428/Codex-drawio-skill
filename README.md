@@ -5,14 +5,55 @@
 
 A Codex skill for creating, rebuilding, and refining editable academic diagrams in `.drawio` / diagrams.net format.
 
-## Quick Overview
+> [!IMPORTANT]
+> This repository is a local Codex skill, not a web service or backend application.
+> You do not need Docker, `npm install`, or server deployment.
+> To use it, copy `skill/drawio` into your local Codex skills directory.
 
-- Editable `.drawio` source plus matching `PNG` export
-- Designed for academic and thesis workflows
-- Suitable for architecture diagrams, roadmaps, workflows, and module diagrams
-- Includes a PowerShell helper script for creating a starter `.drawio` file
+## Deployment at a Glance
 
-## Read the Full Guide
+| Item | Value |
+| --- | --- |
+| Project type | Local Codex skill |
+| Build required | No |
+| Server deployment | No |
+| Package installation | No |
+| Target location | `~/.codex/skills/` |
+| Success signal | Codex can respond to `$drawio` prompts |
+
+## 3-Step Quick Start
+
+### 1. Get the repository
+
+Clone or download this repository to your machine.
+
+### 2. Copy the skill folder
+
+Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force $env:USERPROFILE\.codex\skills | Out-Null
+Copy-Item -Recurse -Force .\skill\drawio $env:USERPROFILE\.codex\skills\
+```
+
+macOS / Linux:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R ./skill/drawio ~/.codex/skills/
+```
+
+### 3. Verify the installation
+
+In Codex, try:
+
+```text
+Use $drawio to create a simple academic system architecture diagram as both a .drawio file and a PNG.
+```
+
+If Codex recognizes `$drawio`, the deployment is complete.
+
+## Need the Detailed Guide?
 
 - Chinese guide: [README.zh-CN.md](./README.zh-CN.md)
 - English guide: [README.en.md](./README.en.md)
