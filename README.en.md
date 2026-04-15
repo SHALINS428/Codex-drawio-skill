@@ -6,8 +6,6 @@
 `drawio` is a local Codex skill for creating, rebuilding, and refining editable academic diagrams in `.drawio` / diagrams.net format.
 
 > [!IMPORTANT]
-> This repository is not a web app or backend service.
-> You do not need server deployment, `npm install`, or a build step.
 > To use it, copy `skill/drawio` into your local Codex skills directory.
 
 ## Deployment at a Glance
@@ -24,18 +22,15 @@
 
 ## Before You Start
 
-You only need a few things:
+Before you start, make sure these are true:
 
 - Codex is already available on your machine
 - You can access your local Codex skills directory
 - PowerShell is available if you want to use the helper script on Windows
-- diagrams.net / draw.io is recommended if you want to edit or export figures manually
 
 ## Recommended Deployment Method
 
 ### Option A: Copy the skill folder directly
-
-This is the simplest and most reliable approach for most users.
 
 #### Step 1: Get the repository
 
