@@ -15,6 +15,11 @@ Typical node types:
 - retrieval layer
 - output or application layer
 
+Quality cues:
+- group major subsystems clearly
+- show boundaries and interaction paths, not procedural chronology
+- avoid turning the architecture into a step-by-step flowchart
+
 ## Technical Roadmap
 
 Use this figure type when the reader needs to understand:
@@ -27,6 +32,11 @@ Typical structure:
 - stage
 - key task
 - stage output
+
+Quality cues:
+- keep progression visually directional and stage-based
+- limit stage count to a readable set instead of chaining every minor step
+- make outputs visible at the end of each major stage where relevant
 
 ## Workflow / Process
 
@@ -43,6 +53,11 @@ Typical node types:
 - fallback
 - output
 
+Quality cues:
+- make branching explicit
+- label ambiguous decisions
+- keep loops readable without tangled back-edges
+
 ## Granularity Rule
 
 Before drawing, ask:
@@ -55,3 +70,4 @@ If the answer is:
 
 Do not collapse all three into one overloaded figure.
 
+If a figure starts trying to explain structure, chronology, and detailed control flow at the same time, split it into two figures.

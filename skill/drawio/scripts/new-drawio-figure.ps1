@@ -4,8 +4,8 @@ param(
 
     [string]$Title = 'Academic Diagram',
     [string]$PageName = 'Page-1',
-    [int]$Width = 1600,
-    [int]$Height = 900
+    [int]$Width = 1920,
+    [int]$Height = 1080
 )
 
 Set-StrictMode -Version Latest
@@ -26,11 +26,11 @@ $xml = @"
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" value="$Title" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
-          <mxGeometry x="40" y="24" width="520" height="32" as="geometry" />
+        <mxCell id="title" value="$Title" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontFamily=Arial;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="48" y="24" width="680" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="note" value="Edit this starter file in diagrams.net. Replace placeholder blocks with your actual figure structure." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=14;fontColor=#334155;spacing=10;" vertex="1" parent="1">
-          <mxGeometry x="40" y="84" width="520" height="90" as="geometry" />
+        <mxCell id="note" value="Edit this starter file in diagrams.net. Deliver both the final .drawio source and a matching PNG. Clean up routing, spacing, and typography before considering the figure complete." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=16;fontFamily=Arial;fontColor=#334155;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="48" y="84" width="760" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -40,4 +40,3 @@ $xml = @"
 
 [System.IO.File]::WriteAllText($OutputPath, $xml, (New-Object System.Text.UTF8Encoding($false)))
 Write-Output $OutputPath
-

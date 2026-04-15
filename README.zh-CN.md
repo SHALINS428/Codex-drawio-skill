@@ -20,6 +20,7 @@
 | 是否需要安装依赖 | 不需要 |
 | 实际部署位置 | `~/.codex/skills/` |
 | 成功标志 | Codex 能识别并执行 `$drawio` |
+| 可选本地软件 | diagrams.net / draw.io desktop，用于导出 PNG |
 
 ## 部署前准备
 
@@ -39,6 +40,15 @@
 #### 第 1 步：获取仓库
 
 把仓库下载到本地，或者使用 `git clone` 拉取。
+
+例如：
+
+```bash
+git clone https://github.com/SHALINS428/Codex-drawio-skill.git
+cd drawio-skill
+```
+
+如果你不使用 Git，也可以直接下载 GitHub ZIP 并解压到本地。
 
 #### 第 2 步：创建 Codex 技能目录
 
@@ -103,7 +113,13 @@ cp -R ./skill/drawio ~/.codex/skills/
 
 ## 更新方式
 
-如果你后续修改了这个仓库，可以重新执行一次复制命令覆盖旧版本：
+如果你是用 Git 拉取的仓库，先执行：
+
+```bash
+git pull
+```
+
+然后重新执行一次复制命令覆盖旧版本：
 
 Windows PowerShell：
 
@@ -111,10 +127,40 @@ Windows PowerShell：
 Copy-Item -Recurse -Force .\skill\drawio $env:USERPROFILE\.codex\skills\
 ```
 
+Windows CMD：
+
+```cmd
+xcopy /E /I /Y skill\drawio %USERPROFILE%\.codex\skills\drawio
+```
+
 macOS / Linux：
 
 ```bash
 cp -R ./skill/drawio ~/.codex/skills/
+```
+
+如果你最初是通过 GitHub ZIP 安装的，那么更新时需要重新下载最新 ZIP，解压后再执行一次相同的同步命令。
+
+## PNG 自动导出
+
+仓库现在内置了一个把 `.drawio` 导出为匹配 `PNG` 的脚本：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\export-drawio-png.ps1 `
+  -InputPath .\example.drawio `
+  -OutputPath .\example.png
+```
+
+使用前提：
+
+- 本机已安装 diagrams.net / draw.io desktop
+- 可执行文件能从 PATH 或常见安装目录中被找到
+- 如果找不到，可以手动设置 `DRAWIO_EXECUTABLE` 或 `DIAGRAMS_NET_EXECUTABLE`
+
+例如：
+
+```powershell
+$env:DRAWIO_EXECUTABLE = 'C:\Program Files\draw.io\draw.io.exe'
 ```
 
 ## 卸载方式
@@ -138,6 +184,7 @@ rm -rf ~/.codex/skills/drawio
 - 一个可复用的 Codex 学术绘图技能
 - 面向不同图类型的提示词和风格约束
 - 一个用于生成 `.drawio` 起始文件的 PowerShell 脚本
+- 一个用于将 `.drawio` 自动导出为 `PNG` 的 PowerShell 脚本
 - 适合发布到 GitHub 的清晰仓库结构
 
 ## 适用场景
@@ -158,6 +205,14 @@ powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\new-drawio-figur
   -OutputPath .\example.drawio `
   -Title "Technical Roadmap" `
   -PageName "Roadmap"
+```
+
+将 `.drawio` 导出为 `PNG`：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\export-drawio-png.ps1 `
+  -InputPath .\example.drawio `
+  -OutputPath .\example.png
 ```
 
 ## 设计原则

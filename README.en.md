@@ -20,6 +20,7 @@
 | Package installation | No |
 | Target location | `~/.codex/skills/` |
 | Success signal | Codex recognizes `$drawio` |
+| Optional local app | diagrams.net / draw.io desktop for PNG export |
 
 ## Before You Start
 
@@ -39,6 +40,15 @@ This is the simplest and most reliable approach for most users.
 #### Step 1: Get the repository
 
 Download this repository or clone it locally.
+
+Clone with Git:
+
+```bash
+git clone https://github.com/SHALINS428/Codex-drawio-skill.git
+cd drawio-skill
+```
+
+Or download the GitHub ZIP and extract it locally.
 
 #### Step 2: Create the local skills directory
 
@@ -102,7 +112,13 @@ If the change does not appear immediately, reopen the current session or restart
 
 ## How to Update
 
-After you change this repository, run the same copy command again to overwrite the older local skill:
+If you installed this repository with Git:
+
+```bash
+git pull
+```
+
+Then run the same copy command again to overwrite the older local skill:
 
 Windows PowerShell:
 
@@ -110,10 +126,40 @@ Windows PowerShell:
 Copy-Item -Recurse -Force .\skill\drawio $env:USERPROFILE\.codex\skills\
 ```
 
+Windows CMD:
+
+```cmd
+xcopy /E /I /Y skill\drawio %USERPROFILE%\.codex\skills\drawio
+```
+
 macOS / Linux:
 
 ```bash
 cp -R ./skill/drawio ~/.codex/skills/
+```
+
+If you installed from a GitHub ZIP, download the new ZIP, extract it, and repeat the same sync step.
+
+## PNG Export Automation
+
+This repository includes a script for exporting a finalized `.drawio` file to a matching `PNG`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\export-drawio-png.ps1 `
+  -InputPath .\example.drawio `
+  -OutputPath .\example.png
+```
+
+Requirements:
+
+- diagrams.net / draw.io desktop must be installed locally
+- the desktop executable must be discoverable via PATH or standard install locations
+- if not, set `DRAWIO_EXECUTABLE` or `DIAGRAMS_NET_EXECUTABLE` to the full executable path
+
+Example:
+
+```powershell
+$env:DRAWIO_EXECUTABLE = 'C:\Program Files\draw.io\draw.io.exe'
 ```
 
 ## How to Remove
@@ -137,6 +183,7 @@ rm -rf ~/.codex/skills/drawio
 - A reusable Codex skill for academic diagrams
 - Prompting guidance for figure types and visual style
 - A PowerShell helper script to generate a starter `.drawio` file
+- A PowerShell export script to turn `.drawio` into `PNG`
 - A clean repository layout suitable for GitHub publication
 
 ## Use Cases
@@ -157,6 +204,14 @@ powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\new-drawio-figur
   -OutputPath .\example.drawio `
   -Title "Technical Roadmap" `
   -PageName "Roadmap"
+```
+
+Export `.drawio` to `PNG`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\skill\drawio\scripts\export-drawio-png.ps1 `
+  -InputPath .\example.drawio `
+  -OutputPath .\example.png
 ```
 
 ## Design Rules

@@ -1,5 +1,4 @@
 interface:
   display_name: "Drawio"
-  short_description: "Create editable academic diagrams with PNG export"
-  default_prompt: "Use $drawio to create or refine this academic diagram as both an editable .drawio file and a matching PNG."
-
+  short_description: "Create publication-ready academic diagrams"
+  default_prompt: "Use $drawio to create or refine this academic diagram as a publication-ready .drawio source plus matching PNG, with clean routing, readable typography, and A4-safe layout."
