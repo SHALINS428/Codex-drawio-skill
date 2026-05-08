@@ -26,9 +26,8 @@ The figure must remain legible when:
 - Avoid squeezing long explanations into one box.
 - If text becomes small, reduce wording before expanding complexity.
 - Prefer a clean sans-serif font family and keep it consistent.
-- Main node text should usually stay around 14-16 pt equivalent.
-- Secondary labels should usually stay around 12-14 pt equivalent.
-- Avoid going below roughly 12 pt equivalent in the final A4-ready figure.
+- Use `26px` text throughout the diagram by default unless the user explicitly requests another size.
+- Expand boxes and simplify wording instead of shrinking below the `26px` default.
 - Make titles and major group labels clearly larger than ordinary node labels.
 - Increase box size before shrinking text into an unreadable range.
 
@@ -44,6 +43,7 @@ The figure must remain legible when:
 - Route connectors so they do not pass through text or box interiors unnecessarily.
 - Adjust elbow points and connector bends manually when auto-routing looks awkward.
 - Prefer clean orthogonal connector paths for structured academic diagrams unless another style is clearly better.
+- When a connector needs a turn, use polyline / elbowed routing with explicit bends instead of loose diagonal segments.
 - Move nodes to improve line clarity instead of accepting tangled connector paths.
 
 ## Shape And Line Defaults
@@ -74,6 +74,7 @@ The figure must remain legible when:
 - Is the exported PNG ready to insert into the paper without further cleanup?
 - Are spacing, border widths, and arrow styles consistent across comparable elements?
 - Is the figure readable without relying on color alone?
+- Does the deliverable include the editable `.drawio` source file together with the exported image?
 
 ## Visual Differentiation
 

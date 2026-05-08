@@ -13,6 +13,11 @@ Its default delivery contract is:
 - one editable `.drawio` source file
 - one matching `PNG` export
 
+These are mandatory defaults unless the user explicitly overrides them:
+- all in-diagram text must use `26px`
+- the editable `.drawio` source file must always be delivered together with the rendered image output
+- when connectors need turns or bends, use polyline / elbowed routing rather than loose free-angle lines
+
 ## Publication Quality Bar
 
 - Treat every requested figure as a paper-ready asset unless the user explicitly asks for a rough draft.
@@ -49,6 +54,7 @@ Treat both files as required outputs, not optional nice-to-haves. If you revise 
 
 - Always produce an editable `.drawio` file that opens correctly in diagrams.net.
 - Always produce a matching `PNG` export from the same final diagram state.
+- Never deliver only an image when the task is handled by this skill; the `.drawio` source file is required.
 - Keep the `.drawio` filename and `PNG` filename aligned so the pair is obviously related.
 - Ensure the exported `PNG` is readable when inserted into an A4 thesis or paper page at normal viewing scale.
 - Do not stop after generating raw boxes and arrows; finish the layout to a presentation-ready state.
@@ -147,6 +153,7 @@ The emphasis should be on execution sequence and control logic.
 - Do not leave default messy connector paths if they create avoidable overlaps or visual ambiguity.
 - Place connectors so they do not run through text, cut across boxes, or obscure arrowheads.
 - Prefer orthogonal or otherwise clean routing that makes the reading direction obvious.
+- When a connector needs one or more turns, use polyline / elbow routing with explicit bend points rather than diagonal improvised segments.
 - Reduce line crossings aggressively; if crossings remain, they should be rare and justified by the layout.
 - Attach connectors to sensible sides of nodes so the flow direction reads naturally.
 - Adjust elbow points, bend points, and box positions manually when needed rather than accepting awkward auto-routing.
@@ -158,10 +165,8 @@ The emphasis should be on execution sequence and control logic.
 ## Typography Requirements
 
 - Use a clean sans-serif font family consistently across the figure.
-- Choose font sizes for readability, not compactness.
-- Keep main node text typically around 14-16 pt equivalent.
-- Keep secondary labels typically around 12-14 pt equivalent.
-- Avoid going below roughly 12 pt equivalent in the final exported figure unless the user explicitly accepts denser text.
+- Use `26px` for all text inside the diagram unless the user explicitly requests a different size.
+- Choose wording and box sizes so `26px` text remains readable without being compressed or clipped.
 - Make title text and major section labels visibly larger than node text.
 - Shorten wording before shrinking text to force content into a box.
 - Resize boxes to fit text cleanly; do not let text sit cramped against borders.
@@ -174,8 +179,10 @@ Do not consider the figure complete until all of these are true:
 
 - Both `.drawio` and `PNG` outputs exist and match each other.
 - The exported `PNG` is sharp, unclipped, and ready for direct paper insertion.
+- All in-diagram text uses `26px` unless the user explicitly approved another size.
 - Main labels are readable at normal page zoom without manual zooming.
 - Connector routing is clean enough that the reading order is obvious.
+- Any connector that needs turns uses clean polyline / elbow routing.
 - There are no avoidable line crossings, cramped boxes, or text collisions.
 - Colors remain distinguishable in grayscale or low-saturation print conditions.
 - The figure type is visually appropriate for structure, progression, or process rather than a hybrid mess.
