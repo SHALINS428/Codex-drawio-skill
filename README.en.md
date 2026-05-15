@@ -7,6 +7,7 @@
 
 > [!IMPORTANT]
 > To use it, copy `skill/drawio` into your local Codex skills directory.
+> Connector routing defaults to orthogonal anchor-plus-waypoint paths rather than direct point-to-point lines.
 
 ## Deployment at a Glance
 

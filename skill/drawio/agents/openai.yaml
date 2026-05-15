@@ -1,4 +1,4 @@
 interface:
   display_name: "Drawio"
   short_description: "Create publication-ready academic diagrams"
-  default_prompt: "Use $drawio to create or refine this academic diagram as a publication-ready .drawio source plus matching PNG, with clean routing, readable typography, and A4-safe layout."
+  default_prompt: "Use $drawio to create or refine this academic diagram as a publication-ready .drawio source plus matching PNG, with orthogonal anchor-and-waypoint routing, readable typography, and A4-safe layout."

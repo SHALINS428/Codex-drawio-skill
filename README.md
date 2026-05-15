@@ -9,6 +9,7 @@ A Codex skill for creating, rebuilding, and refining editable academic diagrams 
 > This repository is a local Codex skill, not a web service or backend application.
 > You do not need Docker, `npm install`, or server deployment.
 > To use it, copy `skill/drawio` into your local Codex skills directory.
+> Connector routing defaults to orthogonal anchor-plus-waypoint paths rather than direct point-to-point lines.
 
 ## Deployment at a Glance
 

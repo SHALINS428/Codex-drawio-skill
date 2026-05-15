@@ -16,7 +16,7 @@ Its default delivery contract is:
 These are mandatory defaults unless the user explicitly overrides them:
 - all in-diagram text must use `26px`
 - the editable `.drawio` source file must always be delivered together with the rendered image output
-- when connectors need turns or bends, use polyline / elbowed routing rather than loose free-angle lines
+- draw connectors with orthogonal routing that uses explicit anchors plus bend points, not straight point-to-point segments
 
 ## Publication Quality Bar
 
@@ -79,7 +79,7 @@ Read these references as needed:
 
 Use this script when starting from scratch:
 - `scripts/new-drawio-figure.ps1`
-  Creates a clean starter `.drawio` file that opens in diagrams.net.
+  Creates a clean starter `.drawio` file that opens in diagrams.net and includes an orthogonal anchor-plus-waypoint connector sample.
 - `scripts/export-drawio-png.ps1`
   Exports a finalized `.drawio` file to a matching `PNG` using the installed draw.io / diagrams.net desktop app.
 
@@ -152,10 +152,11 @@ The emphasis should be on execution sequence and control logic.
 
 - Do not leave default messy connector paths if they create avoidable overlaps or visual ambiguity.
 - Place connectors so they do not run through text, cut across boxes, or obscure arrowheads.
-- Prefer orthogonal or otherwise clean routing that makes the reading direction obvious.
-- When a connector needs one or more turns, use polyline / elbow routing with explicit bend points rather than diagonal improvised segments.
+- Use orthogonal routing as the default connector strategy for structured diagrams.
+- Do not draw connectors as direct start-to-end straight segments when the path should turn around layout constraints.
+- Attach connectors to explicit side anchors so the flow direction reads naturally at the source and target nodes.
+- When a connector needs one or more turns, define explicit bend points or waypoints rather than relying on loose diagonal segments or implicit auto-routing.
 - Reduce line crossings aggressively; if crossings remain, they should be rare and justified by the layout.
-- Attach connectors to sensible sides of nodes so the flow direction reads naturally.
 - Adjust elbow points, bend points, and box positions manually when needed rather than accepting awkward auto-routing.
 - Keep enough whitespace around connector bends so the path is visually traceable.
 - If a connector path becomes too crowded, move the surrounding nodes instead of compressing the line further.
@@ -182,7 +183,7 @@ Do not consider the figure complete until all of these are true:
 - All in-diagram text uses `26px` unless the user explicitly approved another size.
 - Main labels are readable at normal page zoom without manual zooming.
 - Connector routing is clean enough that the reading order is obvious.
-- Any connector that needs turns uses clean polyline / elbow routing.
+- Any connector that needs turns uses orthogonal anchor-plus-waypoint routing with explicit bend points.
 - There are no avoidable line crossings, cramped boxes, or text collisions.
 - Colors remain distinguishable in grayscale or low-saturation print conditions.
 - The figure type is visually appropriate for structure, progression, or process rather than a hybrid mess.

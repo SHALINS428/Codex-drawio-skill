@@ -41,9 +41,10 @@ The figure must remain legible when:
 - Keep major grouped sections typically separated by about 40-80 px.
 - Use labeled containers or background bands when grouping related modules.
 - Route connectors so they do not pass through text or box interiors unnecessarily.
+- Use orthogonal connectors as the default for structured academic diagrams.
+- Attach connectors to sensible side anchors instead of treating them as unconstrained point-to-point strokes.
 - Adjust elbow points and connector bends manually when auto-routing looks awkward.
-- Prefer clean orthogonal connector paths for structured academic diagrams unless another style is clearly better.
-- When a connector needs a turn, use polyline / elbowed routing with explicit bends instead of loose diagonal segments.
+- When a connector needs a turn, define explicit bend points or waypoints instead of loose diagonal segments.
 - Move nodes to improve line clarity instead of accepting tangled connector paths.
 
 ## Shape And Line Defaults
